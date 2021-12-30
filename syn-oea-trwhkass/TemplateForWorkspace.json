@@ -113,7 +113,7 @@
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
 						"spark.dynamicAllocation.maxExecutors": "2",
-						"spark.autotune.trackingId": "39a87c0e-3f81-477e-904a-e449f93ca2fe"
+						"spark.autotune.trackingId": "67af39b1-abfc-48df-9601-0ba1aadc2b88"
 					}
 				},
 				"metadata": {
@@ -188,7 +188,7 @@
 							"%run /OEA_framework_example_py"
 						],
 						"outputs": [],
-						"execution_count": 1
+						"execution_count": 9
 					},
 					{
 						"cell_type": "code",
@@ -208,7 +208,7 @@
 							"%run /OEA_modules_example_py"
 						],
 						"outputs": [],
-						"execution_count": 2
+						"execution_count": 10
 					},
 					{
 						"cell_type": "code",
@@ -231,7 +231,7 @@
 							"contoso_sis = ContosoSIS(oea, 'contoso_sis', False)"
 						],
 						"outputs": [],
-						"execution_count": 3
+						"execution_count": 11
 					},
 					{
 						"cell_type": "code",
@@ -253,7 +253,7 @@
 							"m365.copy_test_data_to_stage1()"
 						],
 						"outputs": [],
-						"execution_count": 4
+						"execution_count": 12
 					},
 					{
 						"cell_type": "code",
@@ -277,7 +277,7 @@
 							"m365.process_activity_data_from_stage1()"
 						],
 						"outputs": [],
-						"execution_count": 5
+						"execution_count": 13
 					},
 					{
 						"cell_type": "code",
@@ -327,7 +327,7 @@
 							"df.write.format('parquet').mode('overwrite').save(oea.stage2np + '/ContosoISD/Course')"
 						],
 						"outputs": [],
-						"execution_count": 6
+						"execution_count": 14
 					},
 					{
 						"cell_type": "code",
@@ -369,7 +369,7 @@
 							"print(f\"Created spark db's.\\nYou can now open the 'techInequityDashboardContoso v2.pbix' dashboard and change the datasource to point to: {oea.serverless_sql_endpoint}\")"
 						],
 						"outputs": [],
-						"execution_count": 7
+						"execution_count": 15
 					},
 					{
 						"cell_type": "markdown",
@@ -415,7 +415,7 @@
 							"#reset_all_processing()"
 						],
 						"outputs": [],
-						"execution_count": 8
+						"execution_count": 16
 					}
 				]
 			},
