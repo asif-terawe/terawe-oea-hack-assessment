@@ -17,14 +17,11 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "61f0507c-6026-46ff-85a2-38f374110a7d"
+				"spark.autotune.trackingId": "248e34ac-bbab-433e-8703-a4dd75638a40"
 			}
 		},
 		"metadata": {
 			"saveOutput": true,
-			"synapse_widget": {
-				"version": "0.1"
-			},
 			"enableDebugMode": false,
 			"kernelspec": {
 				"name": "synapse_pyspark",
@@ -46,8 +43,9 @@
 				"nodeCount": 10,
 				"cores": 4,
 				"memory": 28,
-				"extraHeader": null
-			}
+				"automaticScaleJobs": false
+			},
+			"sessionKeepAliveTimeout": 30
 		},
 		"cells": [
 			{
@@ -74,8 +72,7 @@
 					"\r\n",
 					"# More info\r\n",
 					"See [ContosoISD package info](https://github.com/microsoft/OpenEduAnalytics/tree/move_to_delta/packages/ContosoISD) for more details on this example."
-				],
-				"attachments": null
+				]
 			},
 			{
 				"cell_type": "code",
@@ -94,7 +91,6 @@
 				"source": [
 					"%run /OEA_framework_example_py"
 				],
-				"attachments": null,
 				"execution_count": 1
 			},
 			{
@@ -114,7 +110,6 @@
 				"source": [
 					"%run /OEA_modules_example_py"
 				],
-				"attachments": null,
 				"execution_count": 2
 			},
 			{
@@ -137,7 +132,6 @@
 					"m365 = M365(oea)\r\n",
 					"contoso_sis = ContosoSIS(oea, 'contoso_sis', False)"
 				],
-				"attachments": null,
 				"execution_count": 3
 			},
 			{
@@ -159,7 +153,6 @@
 					"contoso_sis.copy_test_data_to_stage1()\r\n",
 					"m365.copy_test_data_to_stage1()"
 				],
-				"attachments": null,
 				"execution_count": 4
 			},
 			{
@@ -183,7 +176,6 @@
 					"contoso_sis.process_data_from_stage1()\r\n",
 					"m365.process_activity_data_from_stage1()"
 				],
-				"attachments": null,
 				"execution_count": 5
 			},
 			{
@@ -233,7 +225,6 @@
 					"df = spark.sql(\"select Id, Name, Code, Description, ExternalId, CreateDate, LastModifiedDate, IsActive, CalendarId, 'Math' Department from Course\")\r\n",
 					"df.write.format('parquet').mode('overwrite').save(oea.stage2np + '/ContosoISD/Course')"
 				],
-				"attachments": null,
 				"execution_count": 6
 			},
 			{
@@ -271,10 +262,10 @@
 					"spark.sql(f\"create table if not exists s2_ContosoISD.Course using PARQUET location '\" + oea.stage2np + \"/ContosoISD/Course'\")\r\n",
 					"spark.sql(f\"create table if not exists s2_ContosoISD.Attendance using PARQUET location '\" + oea.stage2np + \"/ContosoISD/Attendance'\")\r\n",
 					"spark.sql(f\"create table if not exists s2_ContosoISD.SectionMark using PARQUET location '\" + oea.stage2np + \"/ContosoISD/SectionMark'\")\r\n",
+					"spark.sql(f\"create table if not exists s2_ContosoISD.studentdemographics using PARQUET location '\" + oea.stage2np + \"/contoso_sis/studentdemographics'\")\r\n",
 					"\r\n",
 					"print(f\"Created spark db's.\\nYou can now open the 'techInequityDashboardContoso v2.pbix' dashboard and change the datasource to point to: {oea.serverless_sql_endpoint}\")"
 				],
-				"attachments": null,
 				"execution_count": 7
 			},
 			{
@@ -291,8 +282,7 @@
 					"You can uncomment line 11 in the cell below and run the cell to reset everything and walk through the process again from the top.\r\n",
 					"\r\n",
 					"Note: remember to comment out line 11 again to prevent accidental resetting of the example"
-				],
-				"attachments": null
+				]
 			},
 			{
 				"cell_type": "code",
@@ -321,7 +311,6 @@
 					"# Uncomment the following line and run this cell to reset everything if you want to walk through the process again.\r\n",
 					"#reset_all_processing()"
 				],
-				"attachments": null,
 				"execution_count": 8
 			}
 		]
